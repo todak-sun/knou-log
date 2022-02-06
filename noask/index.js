@@ -4,6 +4,9 @@ console.log(robot.getMousePos());
 robot.moveMouse(1411, 636);
 
 
+const image = robot.screen.capture(0, 0, 100, 100);
+
+
 // robot.setMouseDelay(2);
 
 // const TWO_PI = Math.PI * 2;
