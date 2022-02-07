@@ -1,8 +1,21 @@
 const robot = require('robotjs');
 const Jimp = require('jimp');
 
-console.log(robot.getMousePos());
+const padL = (num, length, alt = '0') => (`${num}`.length >= length ? `${num}` : `${new Array(length - `${num}`.length).fill(alt).join('')}${num}`);
 
+
+async function run(title = 'TEST') {
+  const MAX_PAGE = 6;
+  for (let i = 1; i <= MAX_PAGE; i++) {
+    const bitmap = robot.screen.capture(1280, 80, 940, 1260);
+    await saveImage(bitmap, `./results/${title}/${padL(i, 5)}.png`);
+    robot.moveMouse(3392, 712);
+    robot.mouseClick();
+    await wait(1000 * 1.5);
+  }
+}
+
+run()
 
 /**
  *
@@ -25,5 +38,13 @@ function saveImage(capture, path) {
       console.error(e);
       rej(e);
     }
+  });
+}
+
+function wait(time) {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      res();
+    }, time);
   });
 }
