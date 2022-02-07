@@ -1,20 +1,29 @@
 const robot = require('robotjs');
+const Jimp = require('jimp');
 
 console.log(robot.getMousePos());
-robot.moveMouse(1411, 636);
 
 
-const image = robot.screen.capture(0, 0, 100, 100);
-
-
-// robot.setMouseDelay(2);
-
-// const TWO_PI = Math.PI * 2;
-// const SCREEN_SIZE = robot.getScreenSize();
-// const height = SCREEN_SIZE.height / 2 - 10;
-// const width = SCREEN_SIZE.width;
-
-// for (let x = 0; x < width; x++) {
-//   let y = height * Math.sin((TWO_PI * x) / width) + height;
-//   robot.moveMouse(x, y);
-// }
+/**
+ *
+ * @param {robot.Bitmap} capture
+ * @returns
+ */
+function saveImage(capture, path) {
+  return new Promise((res, rej) => {
+    try {
+      const image = new Jimp(capture.width, capture.height);
+      let pos = 0;
+      image.scan(0, 0, image.bitmap.width, image.bitmap.height, (x, y, index) => {
+        image.bitmap.data[index + 2] = capture.image.readUInt8(pos++);
+        image.bitmap.data[index + 1] = capture.image.readUInt8(pos++);
+        image.bitmap.data[index + 0] = capture.image.readUInt8(pos++);
+        image.bitmap.data[index + 3] = capture.image.readUInt8(pos++);
+      });
+      image.write(path, res);
+    } catch (e) {
+      console.error(e);
+      rej(e);
+    }
+  });
+}
