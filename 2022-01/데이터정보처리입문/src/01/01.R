@@ -1,0 +1,5 @@
+setwd(dir = 'd:/workspace/github/knou-log/2022-01/데이터정보처리입문/src/01')
+ex12 <- read.csv("./data/ex1-2.csv")
+head(ex12)
+plot(ex12$math, ex12$physics, pch = 19, col = "BLUE")
+title("\n Scatter Plot of (math, physics)\n")
