@@ -5,13 +5,13 @@ const padL = (num, length, alt = '0') => (`${num}`.length >= length ? `${num}` :
 
 
 async function run(title = 'TEST') {
-  const MAX_PAGE = 700;
+  const MAX_PAGE = 1000;
   for (let i = 1; i <= MAX_PAGE; i++) {
-    const bitmap = robot.screen.capture(1330, 80, 945, 1260);
+    const bitmap = robot.screen.capture(0, 70, 1095, 1320);
     await saveImage(bitmap, `./results/${title}/${padL(i, 5)}.png`);
-    robot.moveMouse(2312, 711);
+    robot.moveMouse(1076, 723);
     robot.mouseClick();
-    await wait(1000 * 2);
+    await wait(1000 * 3);
   }
 }
 

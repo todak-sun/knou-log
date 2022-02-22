@@ -1,3 +1,7 @@
+/**
+ * node merge --in=${filePath} --name=${fileName}
+ */
+
 const {promisify} = require(`util`);
 const exec = promisify(require(`child_process`).exec);
 
