@@ -15,5 +15,5 @@ barplot(table(dice1200) / 1200, ylim = c(0, 0.5), main = "(c) n = 1200")
 abline(b = 0, a = 1 / 6, col = 2)
 
 dice12000 <- sample(1:6, size = 12000, replace = TRUE)
-barplot(table(dice1200) / 12000, ylim = c(0, 0.5), main = "(d) n = 12000")
+barplot(table(dice12000) / 12000, ylim = c(0, 0.5), main = "(d) n = 12000")
 abline(b = 0, a = 1 / 6, col = 2)
