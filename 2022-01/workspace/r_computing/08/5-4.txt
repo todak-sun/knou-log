@@ -1,0 +1,5 @@
+d.range <- function(data) {
+  data.min <- min(data) # calc min of data
+  data.max <- max(data) # calc max of data
+  c(data.min, data.max) # print range of data
+}
