@@ -26,6 +26,7 @@ public class QuickSort {
       } else {
         this.swap(arr, start, right);
       }
+      System.out.println(Arrays.toString(arr));
     }
 
     return right;
@@ -39,7 +40,7 @@ public class QuickSort {
 
   public static void main(String[] args) {
     QuickSort qs = new QuickSort();
-    int[] target = { 35, 26, 15, 77, 10, 61, 11, 59, 17, 48, 19, 40 };
+    int[] target = { 28, 43, 18, 13, 38, 23, 33, 8 };
     System.out.println(String.format("before ==== %s", Arrays.toString(target)));
     qs.sort(target, 0, target.length);
     System.out.println(String.format("after ==== %s", Arrays.toString(target)));
